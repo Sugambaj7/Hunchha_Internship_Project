@@ -7,8 +7,8 @@ export const employeeSchema = z.object({
       message: 'Profile picture is required',
     }),
   fullName: z.string().min(3, 'Full name must be at least 3 characters'),
-  email: z.string().email('Invalid email'),
-  department: z.string(),
+  email: z.string().regex(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i, 'Valid Format: abc123@example.com'),
+   department: z.string().min(1, "Department is required"),
    joiningDate: z
     .string()
     .refine((dateStr) => {
@@ -16,9 +16,9 @@ export const employeeSchema = z.object({
       const inputDate = new Date(dateStr);
       today.setHours(0, 0, 0, 0);
       inputDate.setHours(0, 0, 0, 0);
-      return inputDate > today;
+      return inputDate <= today;
     }, {
-      message: "Joining date must be in the future",
+      message: "Joining date cannot be in the future",
     }),
 });
 

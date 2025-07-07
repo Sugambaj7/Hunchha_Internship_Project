@@ -58,9 +58,9 @@ export const EmployeeForm = ({status, onClose}: EmployeeFormProps) => {
             <option value="">Choose Department</option>
             <option value="HR Department">HR Departmemt</option>
             <option value="Finance Department">Finance Departmemt</option>
-            <option value="Sales Department">Sales Departmemt</option>
+            <option value="Sales Department">Sales Department</option>
           </select>
-          
+          <p className="text-red-500">{errors.department?.message}</p>
 
           <label htmlFor="">Profile Picture</label>
           <input
