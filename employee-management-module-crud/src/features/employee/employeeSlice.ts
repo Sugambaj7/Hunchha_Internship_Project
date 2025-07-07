@@ -37,6 +37,17 @@ export const deleteEmployee = createAsyncThunk('employee/deleteEmployee', async 
   return id;
 });
 
+export const updateEmployee = createAsyncThunk(
+  'employee/updateEmployee',
+  async (employee: Employee) => {
+    const response = await axios.put<Employee>(
+      `http://localhost:3001/employees/${employee.id}`,
+      employee
+    );
+    return response.data;
+  }
+);
+
 const employeeSlice = createSlice({
   name: "employee",
   initialState,
@@ -80,8 +91,24 @@ const employeeSlice = createSlice({
       .addCase(deleteEmployee.rejected, (_state, action) => {
         console.error("Failed to delete employee:", action.error.message);
         _state.loading = false;
-      });
-    },
+      })
+      .addCase(updateEmployee.pending, (state) => {
+        state.loading = true;
+        console.log("Updating employee...");
+      })
+      .addCase(updateEmployee.fulfilled, (state, action: PayloadAction<Employee>) => {
+        const index = state.employees.findIndex(employee => employee.id === action.payload.id);
+        if (index !== -1) {
+          state.employees[index] = action.payload;
+        }
+        state.loading = false;
+        console.log("Employee updated successfully:", action.payload);
+      })
+      .addCase(updateEmployee.rejected, (_state, action) => {
+        console.error("Failed to update employee:", action.error.message);
+        _state.loading = false;
+      })
+    }
 });
 
 export default employeeSlice.reducer;

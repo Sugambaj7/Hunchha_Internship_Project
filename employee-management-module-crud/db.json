@@ -1,20 +1,28 @@
 {
   "employees": [
     {
-      "id": "dd418366-8473-421d-9031-2308e0fdba6a",
-      "fullName": "Sugam Bajracharya",
-      "email": "sugambaj123@gmaill.com",
-      "department": "Sales Department",
-      "profilePic": "Screenshot (2).png",
+      "id": "3815e6d5-d8ef-4e1c-aab0-ceb0e00a7b49",
+      "fullName": "Mohit Shakya",
+      "email": "mohit123@gmail.com",
+      "department": "HR Department",
+      "profilePic": "Screenshot (3).png",
+      "joiningDate": "2025-07-01"
+    },
+    {
+      "id": "2d34af7c-dc1b-4630-a71f-3e13eedd0851",
+      "fullName": "Ram Hari",
+      "email": "ram123@gmail.com",
+      "department": "Finance Department",
+      "profilePic": "Screenshot (5).png",
       "joiningDate": "2025-07-02"
     },
     {
-      "id": "43292015-4444-4bb6-b2bb-9f83fcd5f24b",
-      "fullName": "Shyam Lama",
-      "email": "shyam123@gmail.com",
+      "id": "567a8c87-712f-4674-a48a-b0e4c194a823",
+      "fullName": "Shrijan Karki",
+      "email": "shrijan@gmail.com",
       "department": "Sales Department",
-      "profilePic": "Screenshot (5).png",
-      "joiningDate": "2025-07-02"
+      "profilePic": "Screenshot (3).png",
+      "joiningDate": "2025-07-06"
     }
   ]
 }

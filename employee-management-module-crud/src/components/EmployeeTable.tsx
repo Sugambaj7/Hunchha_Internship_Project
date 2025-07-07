@@ -1,12 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hook.ts";
 import { fetchEmployee } from "../features/employee/employeeSlice.ts";
 import { deleteEmployee } from "../features/employee/employeeSlice.ts";
+import {EditEmployeeForm} from "./EditEmployeeForm.tsx";
 
    interface EmployeeFormProps {
         status: boolean;
     }
 export default function EmployeeTable({ status }: EmployeeFormProps) {
+
+    const [editPopUpStatus, setEditPopUpStatus] = useState(false);
+    const [editEmployeeId, setEditEmployeeId] = useState<string | null>(null);
+
     const dispatch = useAppDispatch();
     const { employees} = useAppSelector((state) => state.employee);
 
@@ -14,11 +19,17 @@ export default function EmployeeTable({ status }: EmployeeFormProps) {
         dispatch(
             fetchEmployee() 
         )
-    }, [status]);
+    }, [status, editPopUpStatus]);
+
+    const handleEditEmployee = (id: string) => {
+        setEditPopUpStatus(!editPopUpStatus);
+        setEditEmployeeId(id);
+        console.log("Edit Employee ID:", id);
+    }
 
     return (
     <>
-    { !status ? <div>
+    { !status && !editPopUpStatus ? <div>
         <table className="border border-gray-400">
             <thead className='bg-blue-400 text-white'>
                 <tr>
@@ -43,7 +54,7 @@ export default function EmployeeTable({ status }: EmployeeFormProps) {
                     </td>
                     <td className='p-4'>{employee.joiningDate}</td>
                     <td className='p-4'>
-                        <button className='bg-blue-400 text-white px-4 py-2 rounded'>Edit</button>
+                        <button className='bg-blue-400 text-white px-4 py-2 rounded' onClick={() => handleEditEmployee(employee.id)}>Edit</button>
                         <button className='bg-red-400 text-white px-4 py-2 rounded ml-2' onClick = {() => dispatch(deleteEmployee(employee.id))}>Delete</button>
                     </td>
                 </tr>
@@ -52,7 +63,10 @@ export default function EmployeeTable({ status }: EmployeeFormProps) {
 
         </table>
     </div>: null }
+
+    {
+        editPopUpStatus && <EditEmployeeForm status={editPopUpStatus} onClose={() => setEditPopUpStatus(false)} id={editEmployeeId} />
+    }
     </>
-    
   )
 }
