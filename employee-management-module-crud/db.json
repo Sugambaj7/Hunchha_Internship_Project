@@ -1,0 +1,12 @@
+{
+  "employees": [
+    {
+      "id": "dd418366-8473-421d-9031-2308e0fdba6a",
+      "fullName": "Sugam Bajracharya",
+      "email": "sugambaj123@gmaill.com",
+      "department": "Sales Department",
+      "profilePic": "Screenshot (2).png",
+      "joiningDate": "2025-07-02"
+    }
+  ]
+}
