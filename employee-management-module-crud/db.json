@@ -15,14 +15,6 @@
       "department": "Sales Department",
       "profilePic": "Screenshot (5).png",
       "joiningDate": "2025-07-02"
-    },
-    {
-      "id": "1c58a6e9-08da-42ce-a7aa-fe8e2756e6f2",
-      "fullName": "Mohit Shakya",
-      "email": "mohit123@gmail.com",
-      "department": "Finance Department",
-      "profilePic": "Screenshot (2).png",
-      "joiningDate": "2025-07-01"
     }
   ]
 }

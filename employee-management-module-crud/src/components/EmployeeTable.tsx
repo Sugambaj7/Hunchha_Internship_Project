@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hook.ts";
 import { fetchEmployee } from "../features/employee/employeeSlice.ts";
+import { deleteEmployee } from "../features/employee/employeeSlice.ts";
 
    interface EmployeeFormProps {
         status: boolean;
@@ -43,7 +44,7 @@ export default function EmployeeTable({ status }: EmployeeFormProps) {
                     <td className='p-4'>{employee.joiningDate}</td>
                     <td className='p-4'>
                         <button className='bg-blue-400 text-white px-4 py-2 rounded'>Edit</button>
-                        <button className='bg-red-400 text-white px-4 py-2 rounded ml-2'>Delete</button>
+                        <button className='bg-red-400 text-white px-4 py-2 rounded ml-2' onClick = {() => dispatch(deleteEmployee(employee.id))}>Delete</button>
                     </td>
                 </tr>
                ))}
