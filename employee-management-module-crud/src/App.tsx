@@ -7,7 +7,7 @@ function App() {
   const [formPopUpStatus, setformPopUpStatus] = useState(false);
 
     useEffect(() => {
-    
+      console.log("Form Popup Status Changed:", formPopUpStatus);
   }, [formPopUpStatus]);
 
 

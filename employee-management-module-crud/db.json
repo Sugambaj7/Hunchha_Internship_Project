@@ -18,11 +18,35 @@
     },
     {
       "id": "567a8c87-712f-4674-a48a-b0e4c194a823",
-      "fullName": "Shrijan Karki",
+      "fullName": "Shrijan Shrestha",
       "email": "shrijan@gmail.com",
       "department": "Sales Department",
       "profilePic": "Screenshot (3).png",
       "joiningDate": "2025-07-06"
+    },
+    {
+      "id": "661a0e14-7879-4409-94ed-ffa8f41f748a",
+      "fullName": "krishna",
+      "email": "krishna123@gmail.com",
+      "department": "HR Department",
+      "profilePic": "Screenshot (5).png",
+      "joiningDate": "2025-07-02"
+    },
+    {
+      "id": "94b8cab8-27cf-4c1e-9a01-1969b4213b16",
+      "fullName": "Rashal",
+      "email": "rashal12@gmail.com",
+      "department": "Finance Department",
+      "profilePic": "Screenshot (5).png",
+      "joiningDate": "2025-07-02"
+    },
+    {
+      "id": "3ec11ddf-2a5a-4365-85f8-43a02db990a2",
+      "fullName": "Brijesh",
+      "email": "brijesh12@gmail.com",
+      "department": "Finance Department",
+      "profilePic": "Screenshot (5).png",
+      "joiningDate": "2025-07-01"
     }
   ]
 }

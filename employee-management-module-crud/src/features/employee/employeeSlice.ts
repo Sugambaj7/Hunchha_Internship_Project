@@ -14,12 +14,14 @@ type EmployeeState = {
   employees: Employee[];
   loading: boolean;
   error: string | null;
+  currentPage: number;
 };
 
 const initialState: EmployeeState = {
   employees: [],
   loading: false,
   error: null,
+  currentPage: 1,
 };
 
 export const addEmployee = createAsyncThunk('employee/addEmployee', async (employee: Employee) => {
@@ -51,7 +53,11 @@ export const updateEmployee = createAsyncThunk(
 const employeeSlice = createSlice({
   name: "employee",
   initialState,
-  reducers: {},
+  reducers: {
+     setCurrentPage: (state, action: PayloadAction<number>) => {
+      state.currentPage = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(addEmployee.pending, (state) => {
@@ -111,4 +117,5 @@ const employeeSlice = createSlice({
     }
 });
 
+export const { setCurrentPage } = employeeSlice.actions;
 export default employeeSlice.reducer;

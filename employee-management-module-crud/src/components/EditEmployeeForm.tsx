@@ -4,9 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { employeeSchema } from "../validation/employeeSchema.ts";
 import type { EmployeeFormData } from "../validation/employeeSchema.ts";
 import { useAppDispatch, useAppSelector } from "../redux/hook.ts";
-import { addEmployee } from "../features/employee/employeeSlice.ts";
 import { updateEmployee } from "../features/employee/employeeSlice.ts";
-import { v4 as uuidv4 } from "uuid";
 
 interface EditEmployeeFormProps {
   id: string | null;
@@ -16,11 +14,11 @@ interface EditEmployeeFormProps {
 
 export const EditEmployeeForm = ({
   id,
-  status,
   onClose,
 }: EditEmployeeFormProps) => {
   const { employees } = useAppSelector((state) => state.employee);
-  const myemployee = employees.find((emp) => emp.id === id);
+   ; 
+  const myemployee = employees.find((emp) => emp?.id === id);
 
   const {
     register,
@@ -34,10 +32,15 @@ export const EditEmployeeForm = ({
   const dispatch = useAppDispatch();
 
   const onSubmit = (data: EmployeeFormData) => {
+    if (!myemployee) {
+      console.error("Employee not found.");
+      return;
+    }
+
     const file = data.profilePic[0];
 
     const employee = {
-      id: myemployee?.id,
+      id: myemployee.id,
       fullName: data.fullName,
       email: data.email,
       department: data.department,
@@ -47,8 +50,6 @@ export const EditEmployeeForm = ({
     dispatch(updateEmployee(employee));
     console.log("Submitted Data:", employee);
   };
-
-  if (!status) return null; // Always return something
 
   return (
     <div>
